@@ -29,21 +29,24 @@ class Document extends PureComponent {
   render() {
     return (
       <div style={{ height: 1500, margin: "0 30px" }}>
-        <h2>Content before the Sticky...</h2>
         <div style={{ marginBottom: 200 }} />
-        <StickyContainer
-          style={{ height: 500, background: "#ddd", padding: "0 30px" }}
-        >
-          <Sticky>
+            <StickyContainer
+	
+        style={{ height: 500, background: "#ddd", padding: "0 30px", overflow: "scroll",}}
+            >
+        <div style={{ marginBottom: 200 }} />
+            <Sticky relative>
             {({
               isSticky,
               wasSticky,
               style,
               distanceFromTop,
               distanceFromBottom,
-              calculatedHeight
+		calculatedHeight,
+		relative
             }) => {
-              console.log({
+		console.log({
+	        relative,
                 isSticky,
                 wasSticky,
                 style,
@@ -53,14 +56,12 @@ class Document extends PureComponent {
               });
               return <Header style={style} />;
             }}
-          </Sticky>
+        </Sticky>
+	    <div style={{ marginBottom: 800 }} />
 
-          <h2 className="text-center" style={{ marginTop: 150 }}>
-            &lt;StickyContainer /&gt;
-          </h2>
+	
         </StickyContainer>
-        <div style={{ marginBottom: 200 }} />
-        <h2>Content after the Sticky...</h2>
+        <div style={{ marginBottom: 800 }} />
       </div>
     );
   }
